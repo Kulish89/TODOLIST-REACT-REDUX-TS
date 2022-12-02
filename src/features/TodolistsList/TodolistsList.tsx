@@ -1,5 +1,4 @@
 import React, { useCallback, useEffect } from "react";
-import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import { AddItemForm } from "../../components/AddItemForm/AddItemForm";
@@ -17,6 +16,7 @@ export const TodolistsList = () => {
   const todolists = useSelector<AppRootStateType, Array<TodolistDomainType>>(
     (state) => state.todolists
   );
+  const dispatch = useDispatch();
   const isLoggedIn = useSelector<AppRootStateType, boolean>(
     (state) => state.auth.isLoggedIn
   );
@@ -25,8 +25,8 @@ export const TodolistsList = () => {
       return;
     }
     dispatch(getTodolistsTC());
-  }, []);
-  const dispatch = useDispatch();
+  }, [dispatch, isLoggedIn]);
+
   const addTodolist = useCallback(
     (title: string) => {
       dispatch(addTodolistTC(title));

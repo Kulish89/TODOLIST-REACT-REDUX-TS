@@ -12,12 +12,11 @@ import { TodolistsList } from "../features/TodolistsList/TodolistsList";
 import { LinearProgress } from "@material-ui/core";
 import { ErrorSnackbar } from "../components/ErrorSnackbar/ErrorSnackbar";
 import { useDispatch, useSelector } from "react-redux";
-import { AppRootStateType } from "./store";
+import { AppRootStateType, AppThunkDispatch } from "./store";
 import { initializeAppTC, RequestStatusType } from "./app-reducer";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { Login } from "../features/Login/Login";
 import { CircularProgress } from "@mui/material";
-import { Dispatch } from "redux";
 import { logoutTC } from "../features/Login/auth-reducer";
 
 function App() {
@@ -30,14 +29,14 @@ function App() {
   const isLoggedIn = useSelector<AppRootStateType, boolean>(
     (state) => state.auth.isLoggedIn
   );
-  const dispatch = useDispatch();
+  const dispatch: AppThunkDispatch = useDispatch();
   useEffect(() => {
     dispatch(initializeAppTC());
-  }, []);
+  }, [dispatch]);
 
   const logoutHandler = useCallback(() => {
     dispatch(logoutTC());
-  }, []);
+  }, [dispatch]);
 
   if (!isInitialized) {
     return <CircularProgress />;

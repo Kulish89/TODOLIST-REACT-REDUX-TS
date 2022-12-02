@@ -1,9 +1,15 @@
 import { authReducer } from "./../features/Login/auth-reducer";
 import { tasksReducer } from "../features/TodolistsList/Task/tasks-reducer";
 import { todolistsReducer } from "../features/TodolistsList/Todolist/todolists-reducer";
-import { applyMiddleware, combineReducers, createStore } from "redux";
-import thunk from "redux-thunk";
+import {
+  AnyAction,
+  applyMiddleware,
+  combineReducers,
+  createStore,
+} from "redux";
+import thunk, { ThunkDispatch } from "redux-thunk";
 import { appReducer } from "./app-reducer";
+import { TypedUseSelectorHook, useSelector } from "react-redux";
 
 const rootReducer = combineReducers({
   tasks: tasksReducer,
@@ -15,3 +21,6 @@ const rootReducer = combineReducers({
 export const store = createStore(rootReducer, applyMiddleware(thunk));
 
 export type AppRootStateType = ReturnType<typeof rootReducer>;
+export type AppThunkDispatch = ThunkDispatch<AppRootStateType, any, AnyAction>;
+export const useAppSelector: TypedUseSelectorHook<AppRootStateType> =
+  useSelector;

@@ -20,7 +20,7 @@ export const Task = React.memo((props: TaskPropsType) => {
   const dispatch = useDispatch();
   const removeTask = useCallback(
     () => dispatch(removeTaskTC(task.id, props.todolistId)),
-    [props.todolistId]
+    [props.todolistId, dispatch, task.id]
   );
 
   const changeTaskStatus = useCallback(
@@ -36,14 +36,14 @@ export const Task = React.memo((props: TaskPropsType) => {
         )
       );
     },
-    [props.todolistId]
+    [props.todolistId, dispatch, task.id]
   );
 
   const onTitleChangeHandler = useCallback(
     (newValue: string) => {
       dispatch(updateTaskTC(task.id, { title: newValue }, props.todolistId));
     },
-    [props.todolistId]
+    [props.todolistId, dispatch, task.id]
   );
 
   return (

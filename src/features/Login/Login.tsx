@@ -11,7 +11,7 @@ import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import { loginTC } from "./auth-reducer";
 import { AppRootStateType } from "../../app/store";
-import { Navigate, redirect } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 type FormikErrorType = {
   email?: string;
@@ -64,6 +64,7 @@ export const Login = () => {
                 <a
                   href={"https://social-network.samuraijs.com/"}
                   target={"_blank"}
+                  rel="noreferrer"
                 >
                   {" "}
                   here

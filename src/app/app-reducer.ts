@@ -1,6 +1,6 @@
-import { Dispatch } from "redux";
 import { authAPI } from "../api/todolists-api";
 import { setIsLoggedInAC } from "../features/Login/auth-reducer";
+import { AppThunkDispatch } from "./store";
 
 const initialState = {
   status: "idle" as RequestStatusType,
@@ -39,7 +39,7 @@ export const setAppInitializedAC = (value: boolean) =>
 
 // thunk====================================================
 
-export const initializeAppTC = () => (dispatch: Dispatch<ActionsType>) => {
+export const initializeAppTC = () => (dispatch: AppThunkDispatch) => {
   authAPI.me().then((res) => {
     if (res.data.resultCode === 0) {
       dispatch(setAppInitializedAC(true));
