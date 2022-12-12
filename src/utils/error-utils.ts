@@ -7,11 +7,11 @@ export const handleServerAppError = <D>(
   dispatch: AppThunkDispatch
 ) => {
   if (data.messages.length) {
-    dispatch(setAppErrorAC(data.messages[0]));
+    dispatch(setAppErrorAC({ error: data.messages[0] }));
   } else {
-    dispatch(setAppErrorAC("some error occurred"));
+    dispatch(setAppErrorAC({ error: "some error occurred" }));
   }
-  dispatch(setAppStatusAC("failed"));
+  dispatch(setAppStatusAC({ status: "failed" }));
 };
 export const handleServerNetworkAppError = (
   error: any,
@@ -20,5 +20,5 @@ export const handleServerNetworkAppError = (
   dispatch(
     setAppErrorAC(error.message ? error.message : "some error occurred")
   );
-  dispatch(setAppStatusAC("failed"));
+  dispatch(setAppStatusAC({ status: "failed" }));
 };

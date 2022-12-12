@@ -1,6 +1,7 @@
 {
   "name": "todo13v2",
   "version": "0.1.0",
+  "homepage": "https://Kulish89.github.io/TODOLIST-REACT-REDUX-TS/",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.4",
@@ -10,6 +11,7 @@
     "@material-ui/lab": "^4.0.0-alpha.61",
     "@mui/icons-material": "^5.0.1",
     "@mui/material": "^5.10.9",
+    "@reduxjs/toolkit": "^1.9.1",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
@@ -40,7 +42,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -81,6 +85,7 @@
     "@storybook/preset-create-react-app": "^3.2.0",
     "@storybook/react": "^6.5.12",
     "@storybook/testing-library": "^0.0.13",
+    "gh-pages": "^4.0.0",
     "ts-jest": "^29.0.3"
   }
 }

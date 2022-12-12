@@ -49,15 +49,19 @@ export const TodoList = React.memo(function (props: PropsType) {
   );
 
   const onAllClickHandler = useCallback(
-    () => dispatch(changeTodolistFilterAC(todoList.id, "all")),
+    () => dispatch(changeTodolistFilterAC({ id: todoList.id, filter: "all" })),
     [dispatch, todoList.id]
   );
   const onActiveClickHandler = useCallback(
-    () => dispatch(changeTodolistFilterAC(todoList.id, "active")),
+    () =>
+      dispatch(changeTodolistFilterAC({ id: todoList.id, filter: "active" })),
     [dispatch, todoList.id]
   );
   const onCompletedClickHandler = useCallback(
-    () => dispatch(changeTodolistFilterAC(todoList.id, "completed")),
+    () =>
+      dispatch(
+        changeTodolistFilterAC({ id: todoList.id, filter: "completed" })
+      ),
     [dispatch, todoList.id]
   );
 
